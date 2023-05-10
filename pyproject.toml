@@ -10,8 +10,8 @@ packages = []
 [tool.poetry.dependencies]
 python = "^3.9"
 fastapi = "^0.95.1"
-
-[tool.poetry.group.test.dependencies]
+scikit-learn = "^1.2.2"
+uvicorn = "^0.22.0"
 
 [tool.poetry.group.dev]
 optional = true
@@ -20,6 +20,7 @@ optional = true
 ipykernel = "*"
 jupyterlab = "*"
 pandas = "^2.0.1"
+xgboost = "^1.7.5"
 
 [build-system]
 requires = ["poetry-core"]
