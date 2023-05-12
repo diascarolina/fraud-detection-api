@@ -229,6 +229,7 @@ Resultado esperado:
 }
 ```
 
+## Enviando um arquivo .csv
 
 Também é possível enviar um arquivo .csv para a API. Será retornado um arquivo .csv igual ao submetido com a adição das predições calculadas de cada linha.
 
