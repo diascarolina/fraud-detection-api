@@ -53,6 +53,18 @@ Com o build do projeto em docker já é rodado o pytest para o teste de prediç�
 
 Com o app rodando localmente ou pelo contâiner, podem ser realizadas as requisições.
 
+Conferindo se está tudo funcionando:
+
+```bash
+curl --location 'http://localhost:8000/health'
+```
+
+Resultado esperado:
+
+```bash
+{"status": "Up and running"}
+```
+
 Exemplo de request único:
 
 ```bash
@@ -216,3 +228,16 @@ Resultado esperado:
     "predictions": "[0,0,0]"
 }
 ```
+
+
+Também é possível enviar um arquivo .csv para a API. Será retornado um arquivo .csv igual ao submetido com a adição das predições calculadas de cada linha.
+
+Isso pode ser feito atráves da própria URL de docs que o FastAPI sobe junto com a API.
+
+Acesse `http://localhost:800/docs` após o app subir.
+
+Procure pela url `upload_csv` e clique em `Try it out`.
+
+Envie o arquivo de teste disponível em `data/request_test_data.csv`: https://raw.githubusercontent.com/diascarolina/fraud-detection-api/main/data/request_test_data.csv
+
+Serão retornadas as predições para esse arquivo.
