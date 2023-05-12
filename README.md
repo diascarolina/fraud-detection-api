@@ -7,8 +7,8 @@ Foi utilizado o seguinte dataset presente no Kaggle:
 [Credit Card Fraud Detection](https://www.kaggle.com/mlg-ulb/creditcardfraud)
 
 Principais tecnologias utilizadas no projeto:
-- Python 3.9
-- Poetry para gerenciamento de dependências
+- Python 3.9.16
+- [Poetry](https://python-poetry.org/) para gerenciamento de dependências
 - FastAPI para criação da API
 - Docker para conteinarização da solução
 
@@ -17,6 +17,9 @@ Para análise de dados e construção do modelo, devido ao tempo, foi feito algo
 
 Para ver análises e modelos mais detalhados em outro projetos anteriores, confira:
 
+- https://github.com/diascarolina/project-insurance-forecast
+- https://github.com/diascarolina/vacinacao-geral-no-brasil
+- https://github.com/diascarolina?tab=repositories
 
 O modelo foi salvo em `.pkl` e importado para o script da API.
 
@@ -88,11 +91,128 @@ curl --location 'http://localhost:8000/predict' \
     "Amount": 149.62
 }'
 ```
+
 Resultado esperado:
+
+```shell
+{
+    "status": "success",
+    "predicted_class": "0"
+}
+```
 
 
 
 Exemplo de request em batch (a quantidade de dados enviados pode ser modificada):
 
+```bash
+curl --location 'http://localhost:8000/predict_batch' \
+--header 'Content-Type: application/json' \
+--data '[
+    {
+        "Time": 0.0,
+        "V1": -1.3598071337,
+        "V2": -0.0727811733,
+        "V3": 2.536346738,
+        "V4": 1.3781552243,
+        "V5": -0.3383207699,
+        "V6": 0.4623877778,
+        "V7": 0.2395985541,
+        "V8": 0.0986979013,
+        "V9": 0.3637869696,
+        "V10": 0.090794172,
+        "V11": -0.5515995333,
+        "V12": -0.6178008558,
+        "V13": -0.9913898472,
+        "V14": -0.3111693537,
+        "V15": 1.4681769721,
+        "V16": -0.4704005253,
+        "V17": 0.2079712419,
+        "V18": 0.0257905802,
+        "V19": 0.4039929603,
+        "V20": 0.2514120982,
+        "V21": -0.0183067779,
+        "V22": 0.2778375756,
+        "V23": -0.1104739102,
+        "V24": 0.0669280749,
+        "V25": 0.1285393583,
+        "V26": -0.1891148439,
+        "V27": 0.1335583767,
+        "V28": -0.0210530535,
+        "Amount": 149.62
+    },
+    {
+        "Time": 0.0,
+        "V1": -1.3598071337,
+        "V2": -0.0727811733,
+        "V3": 2.536346738,
+        "V4": 1.3781552243,
+        "V5": -0.3383207699,
+        "V6": 0.4623877778,
+        "V7": 0.2395985541,
+        "V8": 0.0986979013,
+        "V9": 0.3637869696,
+        "V10": 0.090794172,
+        "V11": -0.5515995333,
+        "V12": -0.6178008558,
+        "V13": -0.9913898472,
+        "V14": -0.3111693537,
+        "V15": 1.4681769721,
+        "V16": -0.4704005253,
+        "V17": 0.2079712419,
+        "V18": 0.0257905802,
+        "V19": 0.4039929603,
+        "V20": 0.2514120982,
+        "V21": -0.0183067779,
+        "V22": 0.2778375756,
+        "V23": -0.1104739102,
+        "V24": 0.0669280749,
+        "V25": 0.1285393583,
+        "V26": -0.1891148439,
+        "V27": 0.1335583767,
+        "V28": -0.0210530535,
+        "Amount": 149.62
+    },
+    {
+        "Time": 0.0,
+        "V1": -1.3598071337,
+        "V2": -0.0727811733,
+        "V3": 2.536346738,
+        "V4": 1.3781552243,
+        "V5": -0.3383207699,
+        "V6": 0.4623877778,
+        "V7": 0.2395985541,
+        "V8": 0.0986979013,
+        "V9": 0.3637869696,
+        "V10": 0.090794172,
+        "V11": -0.5515995333,
+        "V12": -0.6178008558,
+        "V13": -0.9913898472,
+        "V14": -0.3111693537,
+        "V15": 1.4681769721,
+        "V16": -0.4704005253,
+        "V17": 0.2079712419,
+        "V18": 0.0257905802,
+        "V19": 0.4039929603,
+        "V20": 0.2514120982,
+        "V21": -0.0183067779,
+        "V22": 0.2778375756,
+        "V23": -0.1104739102,
+        "V24": 0.0669280749,
+        "V25": 0.1285393583,
+        "V26": -0.1891148439,
+        "V27": 0.1335583767,
+        "V28": -0.0210530535,
+        "Amount": 149.62
+    }
+]'
+```
 
+Resultado esperado:
 
+```shell
+{
+    "status": "success",
+    "predictions": "[0,0,0]"
+}
+```
